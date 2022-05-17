@@ -1,11 +1,6 @@
 Bootstrap: library
 From: debian:bullseye
 
-%files
-    ./files/runVNCServer.sh /opt/runVNCServer.sh
-    ./files/xstartup /xstartup
-    ./noVNC
-
 %post
 
     apt -y update
@@ -16,9 +11,3 @@ From: debian:bullseye
     apt install -y -q ./turbovnc_2.2.5_amd64.deb
     rm ./turbovnc_2.2.5_amd64.deb
     ln -s /opt/TurboVNC/bin/* /usr/local/bin/
-
-    python3 -m pip install --upgrade pip
-
-    # file permissions
-    chmod 755 /opt/runVNCServer.sh
-    chmod 755 /xstartup

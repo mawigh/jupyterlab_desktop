@@ -1,0 +1,1 @@
+from jupyterlab_desktop import JupyterLabDesktop

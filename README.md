@@ -2,32 +2,15 @@
 
 ## Installation
 
-### Requirements
+### Using pip
 
 ```bash
-python3 -m pip install jupyter-server-proxy
+git clone https://github.com/mawigh/jupyterlab_desktop
+cd jupyterlab_desktop
+python3 -m pip install .
 ```
 
-You may want to install JupyterLab.
+## Setup for JupyterHub
 
-### Build Singularity container
-
-```bash
-singularity build /opt/jh_desktop.sif Singularity
-```
-
-#### Local (User) Installation
-
-Attention: You may do not want to overwrite an existing version of jupyter_notebook_config.py inside your home-directory ~/.jupyter/
-
-```bash
-cp jupyter_notebook_config.py ~/.jupyter/
-```
-
-#### Global Installation
-
-Attention: You may do not want to overwrite an existing version of jupyter_notebook_config.py inside your global jupyter config directory /usr/local/etc/jupyter/
-
-```bash
-cp jupyter_notebook_config.py /usr/local/etc/jupyter/
-```
+1. Build Singularity container
+2. read permission for all users 
