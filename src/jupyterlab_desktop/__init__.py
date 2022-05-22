@@ -60,8 +60,10 @@ class JupyterLabDesktop:
 
         existing_env = os.environ.copy();
         lmod_cmd = os.environ['LMOD_CMD'];
+        ex = os.environ.copy();
         load_cmd = subprocess.Popen(str(lmod_cmd) + ' load singularity | grep -w "^PATH" | cut -d "=" -f2 | cut -d ":" -f1', shell=True, env=ex, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL);
         out, err = load_cmd.communicate();
+        out = out.decode().rstrip('\n');
         singularity_cmd = out + '/singularity';
 
         if os.path.exists(singularity_cmd):
