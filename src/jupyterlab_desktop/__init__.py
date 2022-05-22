@@ -1,5 +1,6 @@
 import os;
 import subprocess;
+from shutil import which;
 
 def initVNCServer ():
 
@@ -27,7 +28,7 @@ def initVNCServer ():
 
 class JupyterLabDesktop:
 
-    def __init__ (self, loadsingularity=None):
+    def __init__ (self):
 
             self.loadsingularity = loadsingularity;
             
@@ -37,7 +38,8 @@ class JupyterLabDesktop:
             self.noVNC = self.files + '/noVNC/';
 
             self.singularity_cmd = 'singularity';
-            if not self.loadsingularity == None:
+            check_singularity = which(self.singularity_cmd);
+            if check_singularity == None:
                 self.singularity_cmd = self.loadSingularity();
 
     def getEnvironment (self):
@@ -58,11 +60,14 @@ class JupyterLabDesktop:
 
     def loadSingularity (self):
 
-        #import lmod;
-        from shutil import which;
-        #lmod.load(self.loadsingularity);
-        singularity_exec = which('singularity');
-        return singularity_exec or None;
+        existing_env = os.environ.copy();
+        lmod_cmd = os.environ['LMOD_CMD'];
+        load_cmd = subprocess.Popen(str(lmod_cmd) + ' load singularity | grep -w "^PATH" | cut -d "=" -f2 | cut -d ":" -f1', shell=True, env=ex, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL);
+        out, err = load_cmd.communicate();
+        singularity_cmd = out + '/singularity';
+
+        if os.path.exists(singularity_cmd):
+            return singularity_cmd;
 
     @staticmethod
     def getnoVNCLogo ():
