@@ -30,8 +30,6 @@ class JupyterLabDesktop:
 
     def __init__ (self):
 
-            self.loadsingularity = loadsingularity;
-            
             self.files = os.path.abspath(os.path.join(os.path.dirname(__file__), "../files"));
             self.vncStartup = self.files + '/runVNCServer.sh';
             self.xstartup  = self.files + '/xstartup';
