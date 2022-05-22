@@ -1,2 +1,3 @@
 jh_desktop.sif
-/src/JupyterLabDesktop.egg-info/**
+/src/jupyterlab_desktop.egg-info/**
+/src/jupyterlab_desktop/__pycache__/**
