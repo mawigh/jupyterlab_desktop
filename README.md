@@ -5,12 +5,12 @@
 ### Using pip
 
 ```bash
-git clone https://github.com/mawigh/jupyterlab_desktop
-cd jupyterlab_desktop
-python3 -m pip install .
+python3 -m pip install git+https://github.com/mawigh/jupyterlab_desktop
 ```
 
-## Setup for JupyterHub
+### Build Singularity container
 
-1. Build Singularity container
-2. read permission for all users 
+```bash
+singularity build src/files/jh_desktop.sif Singularity
+
+```
