@@ -1,5 +1,7 @@
 # JupyterLab Desktop (noVNC) Server Proxy
 
+![noVNC JupyterLab](imgs/noVNC_JupyterLab.png)
+
 ## Installation
 
 ### Using pip
